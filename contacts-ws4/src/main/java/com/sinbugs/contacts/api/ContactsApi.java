@@ -92,4 +92,15 @@ public class ContactsApi {
 
         return contactResponseList;
     }
+	
+	@RequestMapping(value="/contact/deleteByFirstnameAndLastname", method=RequestMethod.DELETE)
+    public void deleteByFirstnameAndLastname(@RequestBody @Valid ContactRequestFirstnameAndLastname contactRequestFirstnameAndLastname) {
+        
+		String firstname=contactRequestFirstnameAndLastname.getFirstname();
+		String lastname=contactRequestFirstnameAndLastname.getLastname();
+        
+		contactService.deleteByFirstnameAndLastname(firstname, lastname);
+        
+        
+    }
 }
