@@ -28,13 +28,20 @@ public class ContactService {
         return contactList;
     }
     
+    public Contact findByFirstnameAndLastname(String firstname, String lastname) {
+
+        Contact contact = dao.findByFirstnameAndLastname(firstname, lastname);
+
+        return contact;
+    }
+    
     public List<Contact> findAll() {
 
         List<Contact> contactList = (List<Contact>) dao.findAll();
 
         return contactList;
     }
-    
+
     @Transactional
 	public void deleteByFirstnameAndLastname(String firstname, String lastname) {
     	

@@ -15,6 +15,8 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
      */
     List<Contact> findByFirstname(String firstname);
     
+    Contact findByFirstnameAndLastname(String firstname, String lastname);
+    
     @Transactional
     void deleteByFirstnameAndLastname(String firstname, String lastname);
     
