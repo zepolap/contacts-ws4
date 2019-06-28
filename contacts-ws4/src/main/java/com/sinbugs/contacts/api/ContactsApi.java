@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+
 //import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,6 +72,27 @@ public class ContactsApi {
         return contactResponseList;
     }
 	
+	@RequestMapping(value="/contact/findByFirstnameAndLastname", method=RequestMethod.GET)
+    public ContactResponse findByFirstnameAndLastname(@RequestBody @Valid ContactRequestFirstnameAndLastname contactRequestFirstnameAndLastname) {
+
+        String firstname=contactRequestFirstnameAndLastname.getFirstname();
+        String lastname=contactRequestFirstnameAndLastname.getLastname();
+        
+        Contact contact = contactService.findByFirstnameAndLastname(firstname, lastname);
+        
+        if (contact != null) {
+  
+            // Invoca logica de negocio
+        	Contact updatedContact = contactService.save(contact);
+        	    
+        	// Mapeo entity ==> response dto
+        	ContactResponse contactResponse = mapper.map(updatedContact, ContactResponse.class);
+        	
+        	return contactResponse;
+        }
+		return null;
+    }
+
 	@RequestMapping(value="/contact/findAll", method=RequestMethod.GET)
     public List<ContactResponse> findAll() {
         
@@ -93,6 +115,28 @@ public class ContactsApi {
         return contactResponseList;
     }
 	
+	@RequestMapping(value="/contact/updateContact", method=RequestMethod.PUT)
+    public ContactResponse updateContact(@RequestBody @Valid ContactRequest contactRequest) {
+		
+		String firstname=contactRequest.getFirstname();
+        String lastname=contactRequest.getLastname();
+        String phonenumber=contactRequest.getPhonenumber();
+        String email=contactRequest.getEmail();
+        
+        // Mapeo request dto ==> entity
+        Contact contact = contactService.findByFirstnameAndLastname(firstname, lastname);
+
+		// Invoca logica de negocio
+        contact.setPhonenumber(phonenumber);
+		contact.setEmail(email);
+		Contact updatedContact = contactService.save(contact);
+		
+		// Mapeo entity ==> response dto
+	    ContactResponse contactResponse = mapper.map(updatedContact, ContactResponse.class); 
+	    
+	    return contactResponse;
+    }
+    
 	@RequestMapping(value="/contact/deleteByFirstnameAndLastname", method=RequestMethod.DELETE)
     public void deleteByFirstnameAndLastname(@RequestBody @Valid ContactRequestFirstnameAndLastname contactRequestFirstnameAndLastname) {
         
@@ -100,7 +144,6 @@ public class ContactsApi {
 		String lastname=contactRequestFirstnameAndLastname.getLastname();
         
 		contactService.deleteByFirstnameAndLastname(firstname, lastname);
-        
         
     }
 }
