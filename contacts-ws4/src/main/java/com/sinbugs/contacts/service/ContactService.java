@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 //import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.transaction.annotation.Transactional;
 
 //import com.sinbugs.contacts.api.ContactRequest;
 //import com.sinbugs.contacts.api.ContactResponse;
@@ -32,6 +33,13 @@ public class ContactService {
         List<Contact> contactList = (List<Contact>) dao.findAll();
 
         return contactList;
+    }
+    
+    @Transactional
+	public void deleteByFirstnameAndLastname(String firstname, String lastname) {
+    	
+    	dao.deleteByFirstnameAndLastname(firstname, lastname);
+    	
     }
     
 }
