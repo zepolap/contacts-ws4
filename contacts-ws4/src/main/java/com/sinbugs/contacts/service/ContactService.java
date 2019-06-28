@@ -41,13 +41,7 @@ public class ContactService {
 
         return contactList;
     }
-    
-   // @Transactional
-//	public Contact updateContact(Contact contact){
-  //      return dao.updateContact(contact);
-   // }
- 
-    
+
     @Transactional
 	public void deleteByFirstnameAndLastname(String firstname, String lastname) {
     	
