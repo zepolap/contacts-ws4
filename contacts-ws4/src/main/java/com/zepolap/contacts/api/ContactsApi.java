@@ -1,4 +1,4 @@
-package com.sinbugs.contacts.api;
+package com.zepolap.contacts.api;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import javax.validation.Valid;
 
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 //import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sinbugs.contacts.dto.Contact;
-import com.sinbugs.contacts.service.ContactService;
+import com.zepolap.contacts.dto.Contact;
+import com.zepolap.contacts.service.ContactService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class ContactsApi {
 	
 	@Autowired

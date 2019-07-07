@@ -1,11 +1,11 @@
-package com.sinbugs.contacts.dao;
+package com.zepolap.contacts.dao;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sinbugs.contacts.dto.Contact;
+import com.zepolap.contacts.dto.Contact;
 
 public interface ContactRepository extends JpaRepository<Contact, Long> {
 

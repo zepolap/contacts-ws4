@@ -1,4 +1,4 @@
-package com.sinbugs.contacts;
+package com.zepolap.contacts;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
