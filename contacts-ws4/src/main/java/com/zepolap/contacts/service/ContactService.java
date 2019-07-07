@@ -1,4 +1,4 @@
-package com.sinbugs.contacts.service;
+package com.zepolap.contacts.service;
 
 import java.util.List;
 
@@ -7,10 +7,8 @@ import org.springframework.stereotype.Service;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.transaction.annotation.Transactional;
 
-//import com.sinbugs.contacts.api.ContactRequest;
-//import com.sinbugs.contacts.api.ContactResponse;
-import com.sinbugs.contacts.dao.ContactRepository;
-import com.sinbugs.contacts.dto.Contact;
+import com.zepolap.contacts.dao.ContactRepository;
+import com.zepolap.contacts.dto.Contact;
 
 @Service
 public class ContactService {

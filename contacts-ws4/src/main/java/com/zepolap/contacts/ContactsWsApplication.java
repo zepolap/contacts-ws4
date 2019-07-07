@@ -1,4 +1,4 @@
-package com.sinbugs.contacts;
+package com.zepolap.contacts;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

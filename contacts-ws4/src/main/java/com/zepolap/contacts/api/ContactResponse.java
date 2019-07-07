@@ -1,19 +1,10 @@
-package com.sinbugs.contacts.api;
+package com.zepolap.contacts.api;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
-public class ContactRequest {
+public class ContactResponse {
 
 	private Long id;
-	
-	@NotNull(message="El nombre es requerido")
-	@Size(min=2, max=30, message="El nombre debe tener entre {min} y {max} caracteres")
 	private String firstname;
 	private String lastname;
-	
-	@Pattern(regexp="^\\+[0-9]*$", message="El número de telefono sólo puede tener dígitos iniciando con el símbolo +")
 	private String phonenumber;
 	private String email;
 	
